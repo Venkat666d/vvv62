@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Concept Vault</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #ffffff;
+            --text-dark: #333;
+            --accent-color: #ff5e00;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .banner-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .banner-slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .banner-slide.active {
+            display: block;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            border-radius: 10px;
+            height: 300px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .banner-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+            background: rgba(0, 0.5, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .episode-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .episode-card {
+            width: 200px;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .episode-card:hover {
+            background: #ddd;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>The Concept Vault</header>
+
+    <!-- Banner Slider -->
+    <div class="banner-container">
+        <div class="banner-slide active" onclick="location.href='story.html?episode=1'">
+            <img src="banner1.jpg" alt="Episode 1">
+            <div class="banner-text">Loser - Episode 1: The Beginning</div>
+        </div>
+        <div class="banner-slide" onclick="location.href='story.html?episode=2'">
+            <img src="banner2.jpg" alt="Episode 2">
+            <div class="banner-text">Loser - Episode 2: The Struggle</div>
+        </div>
+    </div>
+
+    <!-- Episode Cards -->
+    <div class="episode-container">
+        <div class="episode-card" onclick="location.href='story.html?episode=1'">
+            <h3>Episode 1: The Beginning</h3>
+        </div>
+        <div class="episode-card" onclick="location.href='story.html?episode=2'">
+            <h3>Episode 2: The Struggle</h3>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2025 The Concept Vault | <a href="privacy.html">Privacy</a> | <a href="contact.html">Contact</a>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.querySelectorAll(".banner-slide");
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[slideIndex].classList.add("active");
+            slideIndex = (slideIndex + 1) % slides.length;
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+    </script>
+</body>
+</html>
